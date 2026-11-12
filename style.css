@@ -1,22 +1,86 @@
 body {
-    font-family: sans-serif;
-    margin: 20px;
+ font-family: Arial, sans-serif;
+ background-color: #e6f2ff;
+ margin: 0;
+ padding: 20px;
 }
 
-ul {
-    padding-left: 20px;
-    margin-top: 15px;
+.container {
+ width: 400px;
+ max-width: 100%;
+ margin: 40px auto;
+ background-color: white;
+ padding: 20px;
+ border-radius: 8px;
+ box-shadow: 0 0 10px #aaa;
+ box-sizing: border-box;
 }
 
-li {
-    margin-bottom: 8px;
+h1 {
+ text-align: center;
+ color: #222;
 }
 
-.completed {
-    text-decoration: line-through;
+.input-area {
+ display: flex;
+ gap: 8px;
+}
+
+#taskInput {
+ flex: 1;
+ padding: 8px;
+ border: 1px solid #999;
+ border-radius: 4px;
 }
 
 button {
-    margin-left: 8px;
-    cursor: pointer;
+ padding: 8px 14px;
+ border: none;
+ border-radius: 4px;
+ background-color: #222;
+ color: white;
+ cursor: pointer;
+}
+
+button:hover {
+ background-color: #555;
+}
+
+ul {
+ list-style: none;
+ padding: 0;
+}
+
+li {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ background-color: #f4f4f4;
+ margin-top: 10px;
+ padding: 10px;
+ border-radius: 4px;
+}
+
+li span {
+ flex: 1;
+ margin-left: 10px;
+}
+
+/* This class is added when a task is completed */
+.completed {
+ text-decoration: line-through;
+ color: gray;
+}
+
+.delete-btn {
+ background-color: #d9534f;
+}
+
+.delete-btn:hover {
+ background-color: #b52b27;
+}
+
+#countText {
+ text-align: center;
+ color: #555;
 }

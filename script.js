@@ -1,36 +1,81 @@
-const taskInput = document.getElementById('taskInput');
-const addBtn = document.getElementById('addBtn');
-const taskList = document.getElementById('taskList');
+// Getting the elements from the HTML page
+var taskInput = document.getElementById("taskInput");
+var addBtn = document.getElementById("addBtn");
+var taskList = document.getElementById("taskList");
+var countText = document.getElementById("countText");
 
-function addTask() {
-    const text = taskInput.value.trim();
-    if (!text) return;
-
-    const li = document.createElement('li');
-
-    const span = document.createElement('span');
-    span.textContent = text;
-    span.onclick = function () {
-        span.classList.toggle('completed');
-    };
-
-    const delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete';
-    delBtn.onclick = function () {
-        taskList.removeChild(li);
-    };
-
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    taskList.appendChild(li);
-
-    taskInput.value = '';
+// Function to show the total number of tasks
+function updateCount() {
+ var total = taskList.children.length;
+ countText.textContent = "Total tasks: " + total;
 }
 
-addBtn.onclick = addTask;
+// Function to add a new task
+function addTask(initialText, isCompleted) {
+ var taskText = (typeof initialText === "string") ? initialText : taskInput.value.trim();
 
-taskInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        addTask();
-    }
+ // Check if the input box is empty
+ if (taskText === "") {
+  alert("Please enter a task!");
+  return;
+ }
+
+ // Create a new list item
+ var li = document.createElement("li");
+
+ // Checkbox to mark the task as completed
+ var checkbox = document.createElement("input");
+ checkbox.type = "checkbox";
+
+ // Text of the task
+ var span = document.createElement("span");
+ span.textContent = taskText;
+
+ if (isCompleted) {
+  checkbox.checked = true;
+  span.classList.add("completed");
+ }
+
+ // Delete button
+ var deleteBtn = document.createElement("button");
+ deleteBtn.textContent = "Delete";
+ deleteBtn.className = "delete-btn";
+
+ // When the checkbox is clicked, add or remove the "completed" class
+ checkbox.addEventListener("change", function () {
+  span.classList.toggle("completed");
+ });
+
+ // When the delete button is clicked, remove the task
+ deleteBtn.addEventListener("click", function () {
+  taskList.removeChild(li);
+  updateCount();
+ });
+
+ // Add everything inside the list item, and then into the list
+ li.appendChild(checkbox);
+ li.appendChild(span);
+ li.appendChild(deleteBtn);
+ taskList.appendChild(li);
+
+ // Clear the input box
+ if (typeof initialText !== "string") {
+  taskInput.value = "";
+ }
+ updateCount();
+}
+
+// Initial tasks from lab manual demo
+addTask("Drink water", true);
+addTask("Eat healthy", false);
+addTask("Eat momos", true);
+
+// Add task when the Add button is clicked
+addBtn.addEventListener("click", addTask);
+
+// Add task when the Enter key is pressed
+taskInput.addEventListener("keypress", function (event) {
+ if (event.key === "Enter") {
+  addTask();
+ }
 });
