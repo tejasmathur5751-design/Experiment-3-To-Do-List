@@ -1,8 +1,15 @@
-# Web Design Experiment 3
+# Web Design Experiment 3: Student Task Planner
 
-Dynamic to-do list application using JavaScript and DOM manipulation. Users can add, delete and mark tasks as completed.
+A dynamic, responsive to-do list planner built with JavaScript and DOM manipulation, designed for college students to track daily lab tasks, assignments, and study goals.
+
+## Features
+- **Semantic Structure**: Top navigation bar, hero banner, responsive sidebar layout, and footer.
+- **Dynamic Task Management**: Add tasks with priority levels (High, Medium, Normal).
+- **Completion Tracking**: Interactive checkbox completion with strikethrough styling and dynamic progress bar.
+- **Filter Tabs**: Quickly view All, Pending, or Completed tasks.
+- **DOM Concepts Applied**: Element creation, event listeners (`click`, `change`, `keypress`), class toggling, and node removal.
 
 ## Files
-- `index.html` - HTML structure with container, input box and task list
-- `style.css` - clean and responsive styles
-- `script.js` - dynamic DOM manipulation for adding, completing and removing tasks
+- `index.html` - Full webpage structure with navbar, banner, task form, and concepts card
+- `style.css` - Clean, responsive CSS with priority badges and progress bar
+- `script.js` - JavaScript DOM manipulation and real-time statistics calculation

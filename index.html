@@ -1,21 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>To-Do List</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Task Planner | Web Design Experiment 3</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
- <h1>My To-Do List</h1>
- <div class="input-area">
- <input type="text" id="taskInput" placeholder="Enter a new task...">
- <button id="addBtn">Add</button>
- </div>
- <ul id="taskList"></ul>
- <p id="countText">Total tasks: 0</p>
-</div>
-<script src="script.js"></script>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">Web Design Lab &bull; Exp 3</div>
+      <nav class="nav-links">
+        <a href="#planner">Task Planner</a>
+        <a href="#stats">Progress</a>
+        <a href="#concepts">DOM Concepts</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner" id="home">
+    <div class="banner-content">
+      <h1>Dynamic Student To-Do Planner</h1>
+      <p>Organize assignments, lab files, and daily revision with dynamic JavaScript DOM manipulation</p>
+    </div>
+  </section>
+
+  <!-- Main Planner Area -->
+  <main class="main-layout" id="planner">
+    
+    <!-- Left Column: Input Form & Progress Card -->
+    <aside class="sidebar-column">
+      <div class="card form-card">
+        <h3>Add New Task</h3>
+        <div class="form-group">
+          <label for="taskInput">Task Description</label>
+          <input type="text" id="taskInput" placeholder="e.g., Submit Web Tech assignment...">
+        </div>
+        <div class="form-group">
+          <label for="prioritySelect">Priority Level</label>
+          <select id="prioritySelect">
+            <option value="Normal">Normal</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </div>
+        <button id="addBtn" class="btn btn-primary">+ Add Task</button>
+      </div>
+
+      <!-- Progress / Stats Card -->
+      <div class="card stats-card" id="stats">
+        <h3>Task Progress</h3>
+        <div class="stat-row">
+          <span>Total Tasks:</span>
+          <strong id="totalCount">0</strong>
+        </div>
+        <div class="stat-row">
+          <span>Completed:</span>
+          <strong id="completedCount" class="text-success">0</strong>
+        </div>
+        <div class="stat-row">
+          <span>Pending:</span>
+          <strong id="pendingCount" class="text-warning">0</strong>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-text" id="progressText">0% Completed</p>
+      </div>
+
+      <!-- Quick Tips Card -->
+      <div class="card tip-card">
+        <h4>Study Tip</h4>
+        <p>Break large project reports into smaller sub-tasks to finish them comfortably before viva dates!</p>
+      </div>
+    </aside>
+
+    <!-- Right Column: Task List and Filters -->
+    <section class="content-column">
+      <div class="card list-card">
+        <div class="list-header">
+          <h2>My Tasks</h2>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+          </div>
+        </div>
+
+        <ul id="taskList" class="task-list"></ul>
+      </div>
+
+      <!-- DOM Concepts Card -->
+      <div class="card info-card" id="concepts">
+        <h3>JavaScript DOM Concepts Applied</h3>
+        <ul class="concept-list">
+          <li><strong>DOM Element Selection:</strong> <code>document.getElementById()</code> and querySelectors</li>
+          <li><strong>Event Listeners:</strong> <code>addEventListener("click")</code> and <code>"keypress"</code> for keyboard submission</li>
+          <li><strong>Dynamic Node Creation:</strong> <code>document.createElement("li")</code>, appending child inputs and buttons</li>
+          <li><strong>Class Manipulation:</strong> <code>classList.toggle("completed")</code> for dynamic status styling</li>
+          <li><strong>DOM Removal:</strong> <code>taskList.removeChild()</code> for instant task deletion</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Web Design Lab &bull; Department of Data Science, JSS University &bull; Experiment 3</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
